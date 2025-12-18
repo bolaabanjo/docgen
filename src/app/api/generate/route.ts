@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     const { code, language, docStyle } = await req.json();
 
-    if (!process.env.CENCORI_API_KEY || process.env.CENCORI_API_KEY) {
+    if (!process.env.CENCORI_API_KEY || process.env.CENCORI_API_KEY === "cen_your_api_key_here") {
       return new Response(
         JSON.stringify({ error: "MISSING_API_KEY", message: "Cencori API key not configured. Please add CENCORI_API_KEY to your .env.local file." }),
         { status: 401, headers: { "Content-Type": "application/json" } }

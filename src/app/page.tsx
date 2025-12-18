@@ -172,6 +172,14 @@ export default function Home() {
             </div>
             <div className="flex gap-10">
               <a
+                href="https://cencori.com"
+                className="text-[10px] font-mono text-[#666] hover:text-white uppercase tracking-widest transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cencori_Infrastucture
+              </a>
+              <a
                 href="https://ai.google.dev/"
                 className="text-[10px] font-mono text-[#666] hover:text-white uppercase tracking-widest transition-colors"
                 target="_blank"

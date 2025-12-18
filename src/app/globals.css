@@ -1,57 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --border: #222222;
-  --header-bg: #0a0a0a;
+    --background: #000000;
+    --foreground: #ffffff;
+    --border: #222222;
+    --header-bg: #0a0a0a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-border-dim: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-border-dim: var(--border);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Technical Borders */
 .tech-border {
-  border: 1px solid var(--border);
+    border: 1px solid var(--border);
 }
 
 .tech-header {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
 }
 
 /* Custom scrollbar - Monochrome */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+    width: 4px;
+    height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+    background: #333333;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+    background: #555555;
 }
 
 /* Selection */
 ::selection {
-  background: #ffffff;
-  color: #000000;
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Typography Overrides */
+.prose pre {
+    background-color: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #222;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #333;
 }
