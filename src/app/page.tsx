@@ -47,127 +47,95 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
       {/* Header */}
-      <header className="border-b border-slate-800/50 backdrop-blur-sm bg-slate-900/50 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <header className="border-b border-[#222] bg-[#050505] sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 bg-white flex items-center justify-center">
+                <div className="w-4 h-4 border-2 border-black" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">DocGen AI</h1>
-                <p className="text-xs text-slate-400">
-                  AI-Powered Documentation
+                <h1 className="text-sm font-mono tracking-[0.3em] uppercase font-bold">
+                  DocGen_AI
+                </h1>
+                <p className="text-[10px] font-mono text-[#666] uppercase tracking-wider mt-0.5">
+                  Automated_Technical_Reference_System
                 </p>
               </div>
             </div>
-            <a
-              href="https://aistudio.google.com/apikey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-slate-400 hover:text-violet-400 transition-colors"
-            >
-              Get Free API Key →
-            </a>
+            <div className="flex items-center gap-6">
+              <div className="hidden md:flex items-center gap-1 font-mono text-[10px] text-[#444]">
+                <span className="w-2 h-2 bg-white/20" />
+                <span>SYSTEM_READY</span>
+              </div>
+              <a
+                href="https://aistudio.google.com/apikey"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-mono text-[#666] hover:text-white transition-colors uppercase tracking-widest border border-[#222] px-3 py-1 bg-black"
+              >
+                Get API Key
+              </a>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        {/* Controls */}
-        <div className="flex flex-wrap gap-4 mb-6">
+      <main className="max-w-7xl mx-auto px-6 py-10">
+        {/* Controls Bar */}
+        <div className="mb-10 p-6 border border-[#222] bg-[#050505] flex flex-wrap items-end gap-8">
           <div className="flex-1 min-w-[200px]">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
-              Language
+            <label className="block text-[10px] font-mono text-[#666] uppercase tracking-widest mb-3">
+              Source_Language
             </label>
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="w-full px-4 py-2.5 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              className="w-full bg-black border border-[#222] px-4 py-2 text-sm font-mono focus:border-white focus:outline-none transition-colors appearance-none cursor-pointer"
             >
               {LANGUAGES.map((lang) => (
                 <option key={lang} value={lang}>
-                  {lang.charAt(0).toUpperCase() + lang.slice(1)}
+                  {lang.toUpperCase()}
                 </option>
               ))}
             </select>
           </div>
+
           <div className="flex-1 min-w-[200px]">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
-              Documentation Style
+            <label className="block text-[10px] font-mono text-[#666] uppercase tracking-widest mb-3">
+              Output_Style
             </label>
             <select
               value={docStyle}
               onChange={(e) => setDocStyle(e.target.value)}
-              className="w-full px-4 py-2.5 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+              className="w-full bg-black border border-[#222] px-4 py-2 text-sm font-mono focus:border-white focus:outline-none transition-colors appearance-none cursor-pointer"
             >
               {DOC_STYLES.map((style) => (
                 <option key={style.value} value={style.value}>
-                  {style.label}
+                  {style.label.toUpperCase()}
                 </option>
               ))}
             </select>
           </div>
-          <div className="flex items-end">
+
+          <div className="flex-shrink-0">
             <button
               onClick={handleGenerate}
               disabled={isLoading || !code.trim()}
-              className="px-6 py-2.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 disabled:from-slate-600 disabled:to-slate-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-violet-500/25 disabled:shadow-none"
+              className="h-10 px-8 bg-white text-black font-mono text-[11px] font-bold uppercase tracking-widest hover:bg-[#ccc] disabled:bg-[#222] disabled:text-[#444] transition-colors flex items-center gap-3"
             >
               {isLoading ? (
                 <>
-                  <svg
-                    className="animate-spin h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Generating...
+                  <div className="w-3 h-3 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                  Processing...
                 </>
               ) : (
                 <>
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  Generate Docs
+                  <div className="w-2 h-2 bg-black" />
+                  Generate Documentation
                 </>
               )}
             </button>
@@ -176,49 +144,64 @@ export default function Home() {
 
         {/* Error Display */}
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400">
-            <p className="font-medium">Error generating documentation</p>
-            <p className="text-sm mt-1">{error.message}</p>
+          <div className="mb-8 p-4 border border-white bg-white text-black font-mono text-xs uppercase tracking-wider flex items-center gap-4">
+            <div className="w-4 h-4 flex items-center justify-center font-bold">!</div>
+            <div>
+              <p className="font-bold">System_Error :: Interaction_Failed</p>
+              <p className="mt-1 opacity-70">{error.message}</p>
+            </div>
           </div>
         )}
 
-        {/* Editor and Preview */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          <CodeEditor
-            code={code}
-            onChange={setCode}
-            language={language}
-          />
-          <DocumentationPreview
-            content={completion}
-            isLoading={isLoading}
-          />
+        {/* Editor and Preview Grid */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          <CodeEditor code={code} onChange={setCode} language={language} />
+          <DocumentationPreview content={completion} isLoading={isLoading} />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/50 mt-12">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <p className="text-center text-sm text-slate-500">
-            Powered by{" "}
-            <a
-              href="https://ai.google.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-violet-400 hover:underline"
-            >
-              Google Gemini
-            </a>{" "}
-            &{" "}
-            <a
-              href="https://sdk.vercel.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-violet-400 hover:underline"
-            >
-              Vercel AI SDK
-            </a>
-          </p>
+      <footer className="border-t border-[#222] mt-20 bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-4 opacity-40">
+              <div className="w-6 h-6 border border-white" />
+              <span className="text-[10px] font-mono tracking-widest uppercase">
+                DocGen // v1.0.0
+              </span>
+            </div>
+            <div className="flex gap-10">
+              <a
+                href="https://ai.google.dev/"
+                className="text-[10px] font-mono text-[#666] hover:text-white uppercase tracking-widest transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gemini_Engine
+              </a>
+              <a
+                href="https://sdk.vercel.ai/"
+                className="text-[10px] font-mono text-[#666] hover:text-white uppercase tracking-widest transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                AI_SDK_Core
+              </a>
+              <a
+                href="https://github.com/bolaabanjo/docgen"
+                className="text-[10px] font-mono text-[#666] hover:text-white uppercase tracking-widest transition-colors font-bold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Source_Code
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 pt-8 border-t border-[#111] text-center">
+            <p className="text-[9px] font-mono text-[#333] tracking-[0.4em] uppercase">
+              Purely Technical // Strictly Monochrome // Absolutely Functional
+            </p>
+          </div>
         </div>
       </footer>
     </div>
